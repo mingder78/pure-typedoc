@@ -1,7 +1,7 @@
 {
-  "name": "@yourorg/my-libp2p-sdk",
-  "version": "0.0.2",
-  "description": "A high-end libp2p sdk for p2p project",
+  "name": "@yourorg/pure-typedoc",
+  "version": "0.0.1",
+  "description": "A template for typedoc",
   "type": "module",
   "private": true,
   "scripts": {
@@ -46,7 +46,7 @@
   },
   "typedocOptions": {
     "entryPointStrategy": "expand",
-    "entryPoints": ["src"],
+    "entryPoints": ["src", "types/calculator.d.ts"],
     "out": "docs/api",
     "theme": "default",
     "includeVersion": true,

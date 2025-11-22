@@ -1,6 +1,6 @@
-import { ScientificCalculator, Calculator } from '@yourorg/my-libp2p-sdk';
-import Todo from '@yourorg/my-libp2p-sdk/Todo';
-import User from '@yourorg/my-libp2p-sdk/User';
+import { ScientificCalculator, Calculator } from '@yourorg/pure-typedoc';
+import Todo from '@yourorg/pure-typedoc/Todo';
+import User from '@yourorg/pure-typedoc/User';
 
 const sci = new ScientificCalculator();
 console.log(sci instanceof ScientificCalculator); // true

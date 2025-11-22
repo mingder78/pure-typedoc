@@ -4,8 +4,6 @@ import Todo from './Todo';
  * Creates a new Peer
  * @property {number} id - Peer Id
  * @property {string} peername - Peer name
- * @method addTodo {Function} - Adds new todo
- * @method getTodos {Function} - Retrieves all todos
  */
 export default class Peer {
   id: number;

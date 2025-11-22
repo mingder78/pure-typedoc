@@ -4,8 +4,6 @@ import Todo from './Todo';
  * Creates a new User
  * @property {number} id - User Id
  * @property {string} username - User username
- * @method addTodo {Function} - Adds new todo
- * @method getTodos {Function} - Retrieves all todos
  */
 export default class User {
   id: number;
