@@ -4,8 +4,7 @@
 
 👉cat app.ts
 ```
-import { type BaseNodeClass, BaseNode } from './src';
-import { createP2PNode } from "./src/utils/mergeMixins";
+import { type BaseNodeClass, BaseNode, createP2PNode } from '@yourorg/pure-typedoc';
 
 const testNode = createP2PNode("chain", BaseNode);
 const nodeInstance = new testNode() as BaseNode;

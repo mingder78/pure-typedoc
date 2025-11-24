@@ -3,7 +3,6 @@
   "version": "0.0.2",
   "description": "A template for typedoc",
   "type": "module",
-  "private": true,
   "scripts": {
     "clean": "rimraf ./docs/api dist",
     "dev": "bun --watch ./app.ts",
@@ -60,6 +59,7 @@
     "@libp2p/identify": "^4.0.9",
     "@libp2p/logger": "^6.2.2",
     "@libp2p/ping": "^3.0.9",
+    "@yourorg/pure-typedoc": "^0.0.2",
     "libp2p": "^3.1.2",
     "vitest": "^4.0.13"
   }
