@@ -1,10 +1,7 @@
-import { type Item, CrudStore } from './src';
+import { type BaseNodeClass, BaseNode } from './src';
+import { createP2PNode } from "./src/utils/mergeMixins";
 
-const sci = new CrudStore()
-console.log(sci)
-const item: Item = sci.create('sdf')
-  sci.create('asdf')
-console.log(item)
-sci.update(1, 'xxxx')
-console.log(sci.getAll())
-
+const testNode = createP2PNode("chain", BaseNode);
+const nodeInstance = new testNode() as BaseNode; 
+const node: BaseNodeClass = await nodeInstance.create();
+console.log("✅ Node created:", node.libp2p.peerId.toString());

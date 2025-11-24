@@ -4,15 +4,14 @@
 
 👉cat app.ts
 ```
-import { type Item, CrudStore } from '@yourorg/pure-typedoc';
+import { type BaseNodeClass, BaseNode } from './src';
+import { createP2PNode } from "./src/utils/mergeMixins";
 
-const sci = new CrudStore()
-console.log(sci)
-const item: Item = sci.create('sdf')
-  sci.create('asdf')
-console.log(item)
-sci.update(1, 'xxxx')
-console.log(sci.getAll())
+const testNode = createP2PNode("chain", BaseNode);
+const nodeInstance = new testNode() as BaseNode;
+const node: BaseNodeClass = await nodeInstance.create();
+
+console.log("✅ Node created:", node.libp2p.peerId.toString());
 ```
 
 ## run
@@ -20,28 +19,7 @@ console.log(sci.getAll())
 👉bun start
 ```
 $ bun ./app.ts
-CrudStore {
-  items: [],
-  nextId: 1,
-  create: [Function: create],
-  get: [Function: get],
-  getAll: [Function: getAll],
-  update: [Function: update],
-  delete: [Function: delete],
-}
-{
-  id: 1,
-  data: "sdf",
-}
-[
-  {
-    id: 1,
-    data: "xxxx",
-  }, {
-    id: 2,
-    data: "asdf",
-  }
-]
+✅ Node created: 12D3KooWGhouXg3j7A3diZEu3N9weA8AhJ3sFhzb7c4Wm3nfvqEs
 ```
 ## vitest
 
