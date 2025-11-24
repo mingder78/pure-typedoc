@@ -35,18 +35,15 @@
   "license": "MIT",
   "devDependencies": {
     "@types/bun": "latest",
-    "@vitest/coverage-v8": "4.0.8",
-    "@vitest/ui": "4.0.8",
     "bun-plugin-dts": "^0.3.0",
-    "typedoc": "^0.28.14",
-    "vitest": "^4.0.8"
+    "typedoc": "^0.28.14"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "typedocOptions": {
     "entryPointStrategy": "expand",
-    "entryPoints": ["src", "types/calculator.d.ts"],
+    "entryPoints": ["src"],
     "out": "docs/api",
     "theme": "default",
     "includeVersion": true,
@@ -56,7 +53,6 @@
     "@libp2p/identify": "^4.0.9",
     "@libp2p/logger": "^6.2.2",
     "@libp2p/ping": "^3.0.9",
-    "@yourorg/my-libp2p-sdk": "link:@yourorg/my-libp2p-sdk",
     "libp2p": "^3.1.2"
   }
 }
