@@ -100,5 +100,39 @@ $ rimraf ./docs/api dist
 $ bun run build.mjs
 $ typedoc
 [info] html generated at ./docs/api
+npm notice
+npm notice 📦  @yourorg/pure-typedoc@0.0.1
+npm notice Tarball Contents
+npm notice 1.8kB README.md
+npm notice 337B dist/index.d.ts
+npm notice 368B dist/index.js
+npm notice 143B docs/api/.nojekyll
+npm notice 77B docs/api/assets/hierarchy.js
+npm notice 2.6kB docs/api/assets/highlight.css
+npm notice 12.9kB docs/api/assets/icons.js
+npm notice 12.3kB docs/api/assets/icons.svg
+npm notice 51.3kB docs/api/assets/main.js
+npm notice 154B docs/api/assets/navigation.js
+npm notice 711B docs/api/assets/search.js
+npm notice 49.4kB docs/api/assets/style.css
+npm notice 18.5kB docs/api/classes/CrudStore.html
+npm notice 4.7kB docs/api/hierarchy.html
+npm notice 20.2kB docs/api/index.html
+npm notice 9.1kB docs/api/interfaces/Item.html
+npm notice 7.6kB docs/api/modules.html
+npm notice 1.4kB package.json
+npm notice Tarball Details
+npm notice name: @yourorg/pure-typedoc
+npm notice version: 0.0.1
+npm notice filename: yourorg-pure-typedoc-0.0.1.tgz
+npm notice package size: 37.4 kB
+npm notice unpacked size: 193.4 kB
+npm notice shasum: 51ff81e9654bbc5665e44dbe07baffb2729830e3
+npm notice integrity: sha512-TwvWEepUgpa53[...]LyuF2hBrAQmbA==
+npm notice total files: 18
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag latest and public access
++ @yourorg/pure-typedoc@0.0.1
+
 ```
 
