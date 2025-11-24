@@ -135,4 +135,35 @@ npm notice Publishing to https://registry.npmjs.org/ with tag latest and public 
 + @yourorg/pure-typedoc@0.0.1
 
 ```
+## test coverage
 
+👉bun test:coverage
+```sh
+$ vitest run --coverage
+
+ RUN  v4.0.13 /private/tmp/pure-typedoc
+      Coverage enabled with v8
+
+ ✓ test/crudStore.test.ts (7 tests) 13ms
+   ✓ CrudStore (7)
+     ✓ should create an item 5ms
+     ✓ should get an item by id 1ms
+     ✓ should update an item 1ms
+     ✓ should update a none existing item 2ms
+     ✓ should delete an item 0ms
+     ✓ should delete a none existing item 0ms
+     ✓ should maintain auto-incrementing ids 0ms
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  13:54:44
+   Duration  1.13s (transform 124ms, setup 0ms, collect 157ms, tests 13ms, environment 0ms, prepare 117ms)
+
+ % Coverage report from v8
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+----------|---------|----------|---------|---------|-------------------
+All files |     100 |      100 |     100 |     100 |
+ index.ts |     100 |      100 |     100 |     100 |
+----------|---------|----------|---------|---------|-------------------
+```

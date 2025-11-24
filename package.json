@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A template for typedoc",
   "type": "module",
+  "private": true,
   "scripts": {
     "clean": "rimraf ./docs/api dist",
     "dev": "bun --watch ./app.ts",
@@ -38,6 +39,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/bun": "latest",
+    "@vitest/coverage-v8": "4.0.13",
+    "@vitest/ui": "4.0.13",
     "bun-plugin-dts": "^0.3.0",
     "rimraf": "^6.1.2",
     "typedoc": "^0.28.14"

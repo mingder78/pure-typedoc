@@ -28,11 +28,24 @@ describe('CrudStore', () => {
     expect(store.getAll()).toEqual([{ id: 1, data: 'xxxx' }])
   })
 
+  it('should update a none existing item', () => {
+    store.create('sdf')
+    expect(store.update(10, 'xxxx')).toBeUndefined()
+    expect(store.get(1)?.data).toBe('sdf')
+    expect(store.getAll()).toEqual([{ id: 1, data: 'sdf' }])
+  })
+
   it('should delete an item', () => {
     store.create('sdf')
     store.create('asdf')
     store.delete(1)
     expect(store.getAll()).toEqual([{ id: 2, data: 'asdf' }])
+  })
+
+  it('should delete a none existing item', () => {
+    store.create('asdf')
+    expect(store.delete(10)).toBe(false)
+    expect(store.getAll()).toEqual([{ id: 1, data: 'asdf' }])
   })
 
   it('should maintain auto-incrementing ids', () => {
