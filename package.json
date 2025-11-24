@@ -1,10 +1,11 @@
 {
   "name": "@yourorg/pure-typedoc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A template for typedoc",
   "type": "module",
   "private": true,
   "scripts": {
+    "clean": "rimraf ./docs/api dist",
     "dev": "bun --watch ./app.ts",
     "start": "bun ./app.ts",
     "build": "bun run build.mjs",
@@ -13,12 +14,15 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "prepublishOnly": "bun run build && bun type-docs"
+    "prepublishOnly": "bun clean && bun run build && bun type-docs"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
-    "./Todo": "./dist/modules/Todo.js",
-    "./User": "./dist/modules/User.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
   },
   "files": [
     "dist",
@@ -36,6 +40,7 @@
   "devDependencies": {
     "@types/bun": "latest",
     "bun-plugin-dts": "^0.3.0",
+    "rimraf": "^6.1.2",
     "typedoc": "^0.28.14"
   },
   "peerDependencies": {
@@ -53,6 +58,7 @@
     "@libp2p/identify": "^4.0.9",
     "@libp2p/logger": "^6.2.2",
     "@libp2p/ping": "^3.0.9",
-    "libp2p": "^3.1.2"
+    "libp2p": "^3.1.2",
+    "vitest": "^4.0.13"
   }
 }
