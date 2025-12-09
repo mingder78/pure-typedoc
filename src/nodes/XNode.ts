@@ -3,9 +3,18 @@ import { logger } from "@libp2p/logger";
 import { circuitRelayTransport } from "@libp2p/circuit-relay-v2";
 import { noise } from "@chainsafe/libp2p-noise";
 import { yamux } from "@chainsafe/libp2p-yamux";
+import { bootstrap } from "@libp2p/bootstrap";
+import { pubsubPeerDiscovery } from "@libp2p/pubsub-peer-discovery";
+import { floodsub } from "@libp2p/floodsub";
+import { ping } from "@libp2p/ping";
+
+import { tcp } from "@libp2p/tcp";
+
 const log = logger("test");
 
 // merge with BaseNode is required
+
+export const PUBSUB_PEER_DISCOVERY = "browser-peer-discovery";
 
 export interface XNodeClass {
   libp2p: Libp2p;
@@ -19,10 +28,11 @@ export class XNode {
   options: Libp2pOptions = {
     addresses: {
       listen: [
+        "/ip4/0.0.0.0/tcp/9001/ws",
+        "/ip4/0.0.0.0/tcp/9002",
         // 👇 Required to create circuit relay reservations in order to hole punch browser-to-browser WebRTC connections
         "/p2p-circuit",
         // 👇 Listen for webRTC connection
-        // "/webrtc",
       ],
     },
     transports: [
@@ -36,7 +46,17 @@ export class XNode {
       // Allow private addresses for local testing
       denyDialMultiaddr: async () => false,
     },
+    peerDiscovery: [
+      bootstrap({
+        // add your relay multiaddr here ! and rerun this client code
+        list: [
+          "/ip4/127.0.0.1/tcp/9001/ws/p2p/12D3KooWBfL9scKjoU1wqJgyokVUbrZc1zpwVamsxRpMatDhFrtZ",
+        ],
+      }),
+    ],
     services: {
+      pubsub: floodsub(),
+      ping: ping(),
     },
   };
   constructor(libp2p: Libp2p) {
@@ -68,21 +88,13 @@ export class XNode {
   async create(): Promise<XNode> {
     const libp2p: Libp2p = await createLibp2p(this.options);
     await libp2p.start();
-    log("✅ Base Node libp2p started with id:", libp2p.peerId.toString());
+    log("✅ X Node libp2p started with id:", libp2p.peerId.toString());
 
-    libp2p.addEventListener("self:peer:update", (event: any) => {
-      // Update multiaddrs list, only show WebRTC addresses
-      const multiaddrs = event.getMultiaddrs();
-      log(multiaddrs);
-    });
-    libp2p.addEventListener("connection:open", (event: any) => {
-      log(
-        "Peer multiple addrs:",
-        libp2p.getMultiaddrs().map((a) => a.toString())
+    libp2p.addEventListener("peer:discovery", (evt) => {
+      const peer = evt.detail;
+      console.log(
+        `🛑 Peer ${libp2p.peerId.toString()} discovered: ${peer.id.toString()}`
       );
-    });
-    libp2p.addEventListener("connection:close", (event: any) => {
-      log("connection closed:", event);
     });
 
     return new XNode(libp2p);
