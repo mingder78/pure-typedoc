@@ -1,4 +1,4 @@
-import { type RelayClientNodeClass, RelayClientNode, BaseNode, createP2PNode } from './dist/';
+import { type RelayClientNodeClass, RelayClientNode, BaseNode, createP2PNode } from './src';
 
 const testNode = createP2PNode("chain", RelayClientNode, BaseNode);
 const nodeInstance = new testNode() as RelayClientNode; 
